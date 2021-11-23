@@ -3,13 +3,11 @@ import { useState } from "react";
 import { ShoppingCart } from "@mui/icons-material";
 import ShopScreen from "./screens/ShopScreen";
 import CartScreen from "./screens/CartScreen";
-import { Badge, Button } from "@mui/material";
-import products from "./data/products";
+import { Badge } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 const App = (props) => {
   const [itemsCount, setItemsCount] = useState(0);
-  const [purchasedProducts, setPurchasedProducts] = useState([]);
   const [cart, setCart] = useState([]);
 
   const cartHandler = (id, action) => {

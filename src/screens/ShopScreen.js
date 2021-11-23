@@ -1,6 +1,6 @@
 import { products } from "../data/products";
 import Item from "../components/Item";
-import { Container, Grid, Box } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 
 const ShopScreen = (props) => {
   const imageRoot = "static/images/";

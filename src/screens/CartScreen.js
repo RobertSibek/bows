@@ -1,5 +1,5 @@
-import { Box, Grid, Paper, Button, Typography } from "@mui/material";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Box, Grid, Paper, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 import "./CartScreen.css";
 
 const CartScreen = (props) => {
