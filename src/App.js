@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import { ShoppingCart } from "@mui/icons-material";
+import { ShoppingCart as CartIcon } from "@mui/icons-material";
 import ShopScreen from "./screens/ShopScreen";
 import CartScreen from "./screens/CartScreen";
 import { Badge } from "@mui/material";
@@ -16,12 +16,12 @@ const App = (props) => {
     // adding item to cart
     if (action === "add") {
       if (index < 0) {
-        const c = cart;
+        let newCart = cart;
         let newItem = { id: id, count: 1 };
-        c.push(newItem);
-        setCart(c);
+        newCart.push(newItem);
+        setCart(newCart);
       } else {
-        const updatedCart = cart;
+        let updatedCart = cart;
         updatedCart[index].count += 1;
         setCart(updatedCart);
       }
@@ -36,9 +36,7 @@ const App = (props) => {
     }
 
     let totalCount = 0;
-
     cart.forEach((i) => (totalCount += i.count));
-
     setItemsCount(totalCount);
   };
 
@@ -46,30 +44,30 @@ const App = (props) => {
     <Router>
       <div className="App">
         <div className="App-header">
-          {itemsCount > 0 && (
-            <Badge badgeContent={itemsCount} color="primary">
-              <Link to="/cart">
-                <ShoppingCart />
-              </Link>
-            </Badge>
-          )}
+          <div className="menu"></div>
+          <div className="searchbox">
+            <input
+              type="text"
+              className="search"
+              placeholder="search product"
+            />
+          </div>
+          <div className="cart-icon">
+            {itemsCount > 0 && (
+              <Badge badgeContent={itemsCount} color="primary">
+                <Link to="/cart">
+                  <CartIcon />
+                </Link>
+              </Badge>
+            )}
+          </div>
         </div>
         <Routes>
           <Route path="/" element={<ShopScreen onUpdateCart={cartHandler} />} />
-          <Route path="/cart" element={<CartScreen />} />
+          <Route path="/cart" element={<CartScreen cart={cart} />} />
         </Routes>
       </div>
     </Router>
-    //  <div className="App">
-    //   <div className="App-header">
-    //     <Badge badgeContent={itemsCount} color="primary">
-    //       <Button onClick={goToCart}>
-    //         <ShoppingCart />
-    //       </Button>
-    //     </Badge>
-    //   </div>
-    //   <ShopScreen onUpdateCart={cartHandler} />
-    // </div>
   );
 };
 

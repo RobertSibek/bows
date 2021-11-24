@@ -1,27 +1,53 @@
-import { Box, Grid, Paper, Button } from "@mui/material";
+import { Box, Paper, Button, Divider } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./CartScreen.css";
+import { products } from "../data/products";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
 
 const CartScreen = (props) => {
   return (
     <Paper sx={{ my: 5, py: 3 }} elevation={5}>
-      <Box sx={{ mx: 5, mt: 5, flexGrow: 1, elevation: 5 }}>
-        <Grid container spacing={2} sx={{ mx: "auto" }}>
-          <Grid item xs={10}>
-            first
-          </Grid>
-          <Grid item xs={10}>
-            second
-          </Grid>
-          <Grid item xs={10}>
-            third
-          </Grid>
-          <Grid item xs={10}>
-            <Button variant="contained">
-              <Link to="/">Back</Link>
-            </Button>
-          </Grid>
-        </Grid>
+      <div className="title">Cart</div>
+      <Box sx={{ mx: "auto", mt: 5, flexGrow: 1, elevation: 5 }}>
+        <Divider />
+        <TableContainer component={Paper}>
+          <Table sx={{ mx: "auto", width: "80%" }}>
+            <TableHead>
+              <TableRow>
+                <TableCell>Product Name</TableCell>
+                <TableCell> Price</TableCell>
+                <TableCell>Amount</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {props.cart.map((item) => {
+                let productIndex = products.findIndex((p) => p.id === item.id);
+                return (
+                  <TableRow>
+                    <TableCell>{products[productIndex].title}</TableCell>
+                    <TableCell>{products[productIndex].price}</TableCell>
+                    <TableCell>{item.count}</TableCell>
+                  </TableRow>
+                );
+              })}
+
+              <TableRow>
+                <TableCell></TableCell>
+                <TableCell colSpan={3}>
+                  <Button variant="contained">
+                    <Link to="/">Back</Link>
+                  </Button>
+                </TableCell>
+                <TableCell></TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
       </Box>
     </Paper>
   );

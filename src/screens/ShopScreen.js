@@ -10,7 +10,7 @@ const ShopScreen = (props) => {
   };
 
   return (
-    <Box sx={{ mx: 5, mt: 5, flexGrow: 1 }}>
+    <Box sx={{ mx: 5, my: 5, flexGrow: 1 }}>
       <Grid container spacing={2} sx={{ mx: "auto" }}>
         {products.map((product) => (
           <Grid item xs={4}>

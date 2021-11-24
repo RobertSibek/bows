@@ -13,6 +13,27 @@
   }
 }
 
+.menu {
+  flex: 1;
+}
+
+.searchbox {
+  flex: 4;
+  text-align: center;
+}
+
+.search {
+  height: 30px;
+  width: 40%;
+  /* color: bl; */
+  background-color: white;
+}
+
+.cart-icon {
+  text-align: right;
+  flex: 1;
+}
+
 a {
   color: white;
 }
@@ -25,9 +46,9 @@ a:active {
   background-color: #282c34;
   height: 5vh;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
   padding: 20px;
