@@ -1,8 +1,24 @@
-.App {
+.menu {
+  flex: 1;
+}
+
+.searchbox {
+  flex: 4;
   text-align: center;
 }
 
-/* a {
+.search {
+  height: 30px;
+  width: 40%;
+  background-color: white;
+}
+
+.cart-icon {
+  text-align: right;
+  flex: 1;
+}
+
+a {
   color: white;
 }
 
@@ -10,7 +26,7 @@ a:active {
   color: white;
 }
 
-.App-header {
+.header {
   background-color: #282c34;
   height: 5vh;
   display: flex;
@@ -20,17 +36,4 @@ a:active {
   font-size: calc(10px + 2vmin);
   color: white;
   padding: 20px;
-}
-
-.App-link {
-  color: #61dafb;
-} */
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

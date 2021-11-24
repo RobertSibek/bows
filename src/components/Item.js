@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 
 const Item = (props) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(props.amount);
 
   const addItem = () => {
     setCount(count + 1);
@@ -38,9 +38,6 @@ const Item = (props) => {
           color="primary"
           variant="outlined"
         />
-        {/* <Typography variant="h6" color="text.primary">
-          {props.price} CZK
-        </Typography> */}
       </CardContent>
       <CardActions sx={{ justifyContent: "center" }}>
         <Button variant="contained" size="small" onClick={addItem}>

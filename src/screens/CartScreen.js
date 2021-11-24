@@ -8,8 +8,13 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import { useLocation } from "react-router-dom";
 
 const CartScreen = (props) => {
+  const location = useLocation();
+  const { cart } = location.state;
+  let totalAmount = 0;
+
   return (
     <Paper sx={{ my: 5, py: 3 }} elevation={5}>
       <div className="title">Cart</div>
@@ -20,22 +25,27 @@ const CartScreen = (props) => {
             <TableHead>
               <TableRow>
                 <TableCell>Product Name</TableCell>
-                <TableCell> Price</TableCell>
                 <TableCell>Amount</TableCell>
+                <TableCell>Price</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {props.cart.map((item) => {
+              {cart.map((item) => {
                 let productIndex = products.findIndex((p) => p.id === item.id);
+                totalAmount += products[productIndex].price * item.count;
                 return (
-                  <TableRow>
+                  <TableRow key={item.id}>
                     <TableCell>{products[productIndex].title}</TableCell>
-                    <TableCell>{products[productIndex].price}</TableCell>
                     <TableCell>{item.count}</TableCell>
+                    <TableCell>{products[productIndex].price}</TableCell>
                   </TableRow>
                 );
               })}
-
+              <TableRow>
+                <TableCell variant="head">Total</TableCell>
+                <TableCell></TableCell>
+                <TableCell variant="head">{totalAmount}</TableCell>
+              </TableRow>
               <TableRow>
                 <TableCell></TableCell>
                 <TableCell colSpan={3}>
